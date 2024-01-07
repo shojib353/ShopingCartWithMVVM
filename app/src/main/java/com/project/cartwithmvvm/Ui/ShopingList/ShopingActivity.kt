@@ -45,7 +45,18 @@ class ShopingActivity : AppCompatActivity(),KodeinAware {
             Adapter.notifyDataSetChanged()
         })
 
+
+        viewModel.getAllShopingItem().observe(this, Observer {
+            var sum=0
+            it.forEach{
+                sum+=it.amount
+            }
+            fav.text=sum.toString()
+        })
+
+
         fav.setOnClickListener {
+
             AddShopingItemDialog(
                 this,
                 object :AddDialogListener{
@@ -53,6 +64,7 @@ class ShopingActivity : AppCompatActivity(),KodeinAware {
                         viewModel.insert(item)
                     }
                 }).show()
+
         }
 
     }

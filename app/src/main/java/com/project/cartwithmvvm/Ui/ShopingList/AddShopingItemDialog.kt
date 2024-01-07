@@ -29,6 +29,7 @@ class AddShopingItemDialog(context: Context,var addDialogListener: AddDialogList
             val item=ShopingItem(name,amount.toInt())
             addDialogListener.addOnButtonClick(item)
             dismiss()
+
         }
         cancle?.setOnClickListener {
             cancel()
